@@ -1,26 +1,19 @@
 const readLine = require("readline-sync");
-const num = readLine.question("Introduce un número: ");
-let value = parseInt(num);
+const num = parseInt(readLine.question("Introduce un número: "));
 
-function createMatrix(value) {
+function createMatrix(size) {
     let matrix = [];
-    let arr = [];
-    let lastValue;
-    for (let i = 0; i < value; i++) {
-        arr = []
-        for (let k = 1; k <= value; k++) {
-            if (i==0){
-                lastValue=k;
-                arr.push(k);
-            }
-            else{
-                lastValue+=1;
-                arr.push(lastValue);
-            }
+    let lastValue = 1;
+
+    for (let i = 0; i < size; i++) {
+        let row = [];
+        for (let j = 0; j < size; j++) {
+            row.push(lastValue++);
         }
-    matrix.push(arr);
+        matrix.push(row);
     }
+    
     console.log(matrix);
 }
 
-createMatrix(value);
+createMatrix(num);
